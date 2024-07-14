@@ -1,0 +1,39 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "NODE_ENV=production rspack build",
+    "build:dev": "NODE_ENV=development rspack build",
+    "build:start": "cd dist && rspack serve",
+    "start": "NODE_ENV=development rspack serve"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Jack Herrington",
+    "email": "jherr@pobox.com"
+  },
+  "devDependencies": {
+    "@rspack/cli": "0.5.4",
+    "@rspack/core": "0.5.4",
+    "@rspack/plugin-react-refresh": "0.5.4",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "postcss-loader": "^8.1.1",
+    "react-refresh": "^0.14.2",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.50.1",
+    "@trpc/client": "11.0.0-rc.452",
+    "@trpc/react": "^9.27.4",
+    "@trpc/react-query": "11.0.0-rc.452",
+    "@trpc/server": "11.0.0-rc.452",
+    "api-server": "1.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^3.23.8"
+  }
+}
