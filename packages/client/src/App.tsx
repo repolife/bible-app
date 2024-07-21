@@ -4,34 +4,25 @@ import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import { trpc } from "./trpc";
 import React, { useState } from "react";
 import "./index.scss";
+import { IndexPage} from './IndexPage.tsx'
 
-const client = new QueryClient();
-
-const AppContent = () => {
-  const trpcQuery = trpc.useQuery(["hello"]);
-  return (
-    <div className="mt-10 text-3xl mx-auto max-w-6xl">
-      <div>Name: client</div>
-      <div>{JSON.stringify(trpcQuery.data)}</div>
-      <div>Framework: react</div>
-      <div>Language: TypeScript</div>
-      <div>CSS: Tailwind</div>
-    </div>
-  );
-};
-const App = () => {
+export const App = () => {
+  const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
-    trpc.createTRPCClient({
-      links: [httpBatchLink({ url: "http://localhost:3030/trpc" })],
+    trpc.createClient({
+      links: [
+        httpBatchLink({
+          url: 'http://localhost:8080/trpc',
+        }),
+      ],
     }),
   );
-
-  return (
-    <QueryClientProvider client={trpcClient} queryClient={client}>
-      <AppContent />
+    return (
+    <trpc.Provider client={trpcClient} queryClient={queryClient}>
+<QueryClientProvider client={queryClient}>
+      <IndexPage/>
     </QueryClientProvider>
-  );
-};
+    </trpc.Provider>)}
 const rootElement = document.getElementById("app");
 if (!rootElement) throw new Error("Failed to find the root element");
 
