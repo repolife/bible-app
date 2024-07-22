@@ -8,8 +8,8 @@ const hello = trpc.hello.useQuery()
 
   return (
   <div>
-  <p>{JSON.stringify(useQuery.data)}</p>
-      </div>
+  <p>{hello.data}</p> 
+  </div>
   )
 
   }
